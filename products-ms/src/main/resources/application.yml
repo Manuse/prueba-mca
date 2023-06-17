@@ -1,0 +1,30 @@
+server:
+  port: 5000
+  
+spring:
+  profiles:
+    active: docker
+
+---
+ 
+spring:
+  config:
+    activate:
+      on-profile:
+      - local
+#  profiles: local
+simulate:
+  rest:
+    url: http://localhost:3001
+    
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+      - docker
+#  profiles: docker
+simulate:
+  rest:
+    url: http://host.docker.internal:3001

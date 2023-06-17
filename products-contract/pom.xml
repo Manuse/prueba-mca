@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.pruebamca</groupId>
+		<artifactId>products</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../</relativePath>
+	</parent>
+	<artifactId>products-contract</artifactId>
+	<name>products-contract</name>
+	<description>Proyecto prueba MCA</description>
+	<properties>
+		<java.version>20</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springdoc</groupId>
+		    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+		    <version>2.1.0</version>
+		</dependency>		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+				<version>6.6.0</version>
+				<executions>
+					<execution>
+						<id>productsContract</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/similarProducts.yaml</inputSpec>
+							<generatorName>spring</generatorName>
+							<modelNameSuffix>DTO</modelNameSuffix>
+							<skipIfSpecIsUnchanged>false</skipIfSpecIsUnchanged>
+							<skipOperationExample>true</skipOperationExample>
+							<generateSupportingFiles>false</generateSupportingFiles>
+							<apiPackage>com.pruebamca.products.api</apiPackage>
+							<modelPackage>com.pruebamca.products.dto</modelPackage>
+							<configOptions>
+								<library>spring-boot</library>
+								<title>${project.artifactId}</title>
+								<serializableModel>true</serializableModel>
+								<openApiNullable>false</openApiNullable>
+								<performBeanValidation>true</performBeanValidation>
+								<useBeanValidation>true</useBeanValidation>
+								<oas3>true</oas3>
+								<dateLibrary>java8</dateLibrary>
+								<ignoreAnyOfInEnum>true</ignoreAnyOfInEnum>
+								<useJakartaEe>true</useJakartaEe>
+								<skipDefaultInterface>true</skipDefaultInterface>
+								<interfaceOnly>true</interfaceOnly>
+								<generatedConstructorWithRequiredArgs>false</generatedConstructorWithRequiredArgs>
+								<additionalModelTypeAnnotations>@lombok.NoArgsConstructor @lombok.AllArgsConstructor</additionalModelTypeAnnotations>
+							</configOptions>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
