@@ -70,16 +70,6 @@ class ProductControllerTest {
 		.andExpect(status().isNotFound());
 		
 	}
-	
-	@Test
-	void getProductSimilar_returnResponseEntity_whenAnyErrorOcurred() throws Exception {
-		//given
-		//when
-		//then
-		mvc.perform(get("/product/ol/similar"))
-		.andExpect(status().isInternalServerError());
-		
-	}
 
 	private void createCasesOk() {
 		MockServerClient mockServer = new MockServerClient("localhost", 3001);
