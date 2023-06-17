@@ -10,8 +10,8 @@
 
 En la misma carpeta del proyecto:
 
-1. Ejecutar el script ```build.sh``` (Este script compilará y creará el contenedor de docker)
-2. Acceder a la url http://localhost:5000/swagger-ui/index.html para poder realizar las pruebas
+1. Ejecutar el script ```build.sh``` (Este script compilará y creará el contenedor en docker)
+2. Acceder a la url http://localhost:5000/swagger-ui/index.html para poder realizar las pruebas de Swagger
 
 ### Pasos para ejecutar los test
 
