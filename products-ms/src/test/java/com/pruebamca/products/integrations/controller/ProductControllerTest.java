@@ -41,8 +41,12 @@ class ProductControllerTest {
 	
 	@Test
 	void getProductSimilar_returnResponseEntity_whenIsAllOk() throws Exception {
+		//given
 		createCasesOk();
-		 mvc.perform(get("/product/1/similar"))
+		
+		//when
+		//then
+		mvc.perform(get("/product/1/similar"))
 		.andExpect(status().isOk())
 		.andExpect(content().json("""
 				[{
@@ -57,9 +61,23 @@ class ProductControllerTest {
 	
 	@Test
 	void getProductSimilar_returnResponseEntity_whenProductNotFound() throws Exception {
+		//given
 		createCaseNotFound();
-		 mvc.perform(get("/product/9/similar"))
+		
+		//when
+		//then
+		mvc.perform(get("/product/9/similar"))
 		.andExpect(status().isNotFound());
+		
+	}
+	
+	@Test
+	void getProductSimilar_returnResponseEntity_whenAnyErrorOcurred() throws Exception {
+		//given
+		//when
+		//then
+		mvc.perform(get("/product/ol/similar"))
+		.andExpect(status().isInternalServerError());
 		
 	}
 
@@ -101,11 +119,9 @@ class ProductControllerTest {
     }
 	
 	private void createCaseNotFound() {
-		MockServerClient mockServer = new MockServerClient("localhost", 3001);
-        
-		mockServer
-        .when(request()
-        		.withMethod("GET")
+		new MockServerClient("localhost", 3001)
+		.when(request()
+				.withMethod("GET")
         		.withPath("/product/9/similarids"),
         		Times.exactly(1)
         		)
